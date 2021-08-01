@@ -1,4 +1,4 @@
-# Analysis of Airbnb properties in Australia
+# Analysis of Airbnb Properties in Australia
 
 This time, I will explore the Airbnb dataset from 2021 obtained at [insideairbnb.com](https://insideairbnb.com) for Australia. I'll visualise all the listings on the map using a great Python library [Datashader](https://datashader.org), will use [Metabase](http://metabase.com) (an open-source BI tool) to answer questions like
 
@@ -9,7 +9,7 @@ This time, I will explore the Airbnb dataset from 2021 obtained at [insideairbnb
 
 The dataset has about 200k listings, 6.3M reviews, and 70M calendar bookings. The live dashboard is available [here](https://metabase.lenalytics.me/public/dashboard/35a5f488-022a-4f16-88fa-1c3260324f82).
     
-# Setup & Tools
+## Setup & Tools
 
 The data exploration setup is similar to the one I described in one of my previous posts "[Data behind parking tickets in New York City](https://dev.to/lenalytics/data-behind-parking-tickets-in-new-york-city-23ac)". I will use
 
@@ -19,7 +19,7 @@ The data exploration setup is similar to the one I described in one of my previo
 
 I assume that you have some basic understanding of containers, Docker and Compose, but if you don't, check out my previous [post](https://dev.to/lenalytics/data-behind-parking-tickets-in-new-york-city-23ac) which explains everything in detail.
 
-# Importing Data
+## Importing Data
 
 To import data into a Postgres database, let's create the following tables:
 
@@ -36,7 +36,7 @@ The analysed dataset (although it has great insights) is not ready to use out of
 
 Python script GIST that performs that ETL process is available [here](https://gist.github.com/lenalytics/c1225258665d49b1f6fe05ebce439840).
 
-# Visualising with Datashader
+## Visualising with Datashader
 This is the first time I used this tool for visualising geodata, and it turned out to be quite good. The reason for choosing it was that it can easily plot big datasets with millions of points of data.
 
 The basic setup is described in the [official documentation](https://datashader.org/index.html), I just want to point out a few things
@@ -84,7 +84,7 @@ img = ds.tf.shade(agg, cmap=colorcet.fire, how='log')
 
 Similar to Melbourne, it's easy to create datashader plots for Sydney, Brisbane, Perth, Adelaide, etc.
 
-# Data Exploration
+## Data Exploration
 
 Let's now turn to Metabase and build a few queries to address the questions at the beginning of that post.
 
@@ -162,7 +162,7 @@ or as a table:
 
 
 
-## Property Details
+### Property Details
 
 Distribution by the **number of bedrooms** doesn't look unexpected:
 
@@ -203,7 +203,7 @@ Some additional interesting findings:
 - There are **5599** hosts in Australia with # of listings > **3**
 
 
-## Christmas 2021 Availability
+### Christmas 2021 Availability
 
 One of the most interesting questions to address is the number of listings still available for Xmas 2021 period, per particular destination, i.e. what percentage of, say, Bondi Beach properties is available. 
 
@@ -235,7 +235,7 @@ The result is `347` listings. So out of `2350` total listings in Bondi Beach are
 
 Keep in mind, the above is based on the booking data as of April 2021.
 
-# Summary
+## Summary
 
 In this article, we've done the following things
 
